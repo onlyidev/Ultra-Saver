@@ -1,8 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Ultra_Saver;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<SimpleDatabaseContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("db"))
+);
 
 var app = builder.Build();
 
