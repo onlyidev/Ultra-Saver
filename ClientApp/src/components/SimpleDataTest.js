@@ -14,6 +14,11 @@ function SimpleDataTest(props) {
 
   return (
     <>
+      <h1>Database Demo</h1>
+      <p>
+        This component gets data from a server API which itself gets data from a
+        PostgreSQL database.
+      </p>
       <button className="btn btn-primary" onClick={populateData}>
         Reload
       </button>
