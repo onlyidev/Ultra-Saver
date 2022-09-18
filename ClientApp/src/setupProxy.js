@@ -7,7 +7,12 @@ const target = env.ASPNETCORE_HTTPS_PORT
   ? env.ASPNETCORE_URLS.split(";")[0]
   : "http://localhost:21932";
 
-const context = ["/weatherforecast", "/helloback", "/simpledatatest"];
+const context = [
+  "/weatherforecast",
+  "/helloback",
+  "/fetchlogindata",
+  "/simpledatatest",
+];
 
 module.exports = function (app) {
   const appProxy = createProxyMiddleware(context, {

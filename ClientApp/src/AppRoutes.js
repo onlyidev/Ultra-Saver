@@ -2,6 +2,7 @@ import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import { HelloWorld } from "./components/HelloWorld";
+import Login from "./components/Login";
 import SimpleDataTest from "./components/SimpleDataTest";
 
 const AppRoutes = [
@@ -24,6 +25,10 @@ const AppRoutes = [
   {
     path: "/show/simpledatatest",
     element: <SimpleDataTest />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ];
 
