@@ -7,7 +7,7 @@ import {
 } from "../contexts/UserProvider";
 
 function Login() {
-  const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext); // This is the global user state
 
   useEffect(() => {
     /* global google */

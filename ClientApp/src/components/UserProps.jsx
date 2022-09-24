@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserProvider";
 
 export default function UserProps() {
-  const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext); // Global user state
   const [props, setProps] = useState({});
 
   async function populateData() {
     const data = await fetch("/userinfo", {
+      // In order to get data from a restricted API we need to provide an Authorization header
       method: "GET",
       headers: {
         Authorization: user.header,

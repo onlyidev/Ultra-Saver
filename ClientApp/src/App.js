@@ -10,6 +10,7 @@ export default class App extends Component {
 
   render() {
     return (
+      // We wrap everything with UserProvider because UserProvider is what provides the global user state
       <UserProvider>
         <Layout>
           <Routes>
