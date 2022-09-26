@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
 import {
   Collapse,
@@ -10,7 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
 
-export class NavMenu extends Component {
+export default class NavMenu extends Component {
+  // eslint-disable-next-line react/static-property-placement
   static displayName = NavMenu.name;
 
   constructor(props) {
@@ -24,6 +26,7 @@ export class NavMenu extends Component {
 
   toggleNavbar() {
     this.setState({
+      // eslint-disable-next-line react/no-access-state-in-setstate
       collapsed: !this.state.collapsed,
     });
   }

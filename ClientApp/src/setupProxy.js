@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const { env } = require("process");
 
@@ -16,7 +17,7 @@ const context = [
 
 module.exports = function (app) {
   const appProxy = createProxyMiddleware(context, {
-    target: target,
+    target,
     secure: false,
     headers: {
       Connection: "Keep-Alive",
