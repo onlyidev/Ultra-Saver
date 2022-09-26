@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
+import React, { useContext, useEffect } from "react";
+
+import {
+  RemoveJwtToken,
+  UpdateJwtToken,
+  UserContext,
+} from "../contexts/UserProvider";
 
 function Login() {
-  const [user, setUser] = useState({});
-
-  function HandleCallback(response) {
-    // function called when user successfully logs in
-    document.getElementById("signInDiv").hidden = true; // hides log in button when logged on
-    const userObject = jwt_decode(response.credential); // decodes jwt token
-    setUser(userObject);
-    console.log(`JWT ID Token: ${response.credential}`);
-    console.log(userObject);
-  }
+  const [user, setUser] = useContext(UserContext); // This is the global user state
 
   useEffect(() => {
     /* global google */
@@ -27,10 +23,13 @@ function Login() {
     });
   }, []);
 
-  function HandleLogOut() {
-    // handles logging out
-    setUser({}); // deletes user data
-    document.getElementById("signInDiv").hidden = false; // shows log in button when logged out
+  function HandleCallback(response) {
+    // function called when user successfully logs in
+    UpdateJwtToken(response.credential, setUser); // Adds token to cookies and sets user login data
+  }
+
+  function HandleLogOut(event) {
+    RemoveJwtToken(setUser); // deletes user data
   }
 
   return (
@@ -39,14 +38,15 @@ function Login() {
       <p>
         This component demonstrates the log in through google functionality.
       </p>
-      <div id="signInDiv" />
-      {Object.keys(user).length !== 0 && ( // This div only shows up when user data is registered
+      <div
+        id="signInDiv"
+        style={{ display: Object.keys(user).length > 0 ? "none" : "block" }}
+      ></div>
+      {Object.keys(user ?? {}).length !== 0 && ( // This div only shows up when user data is registered
         <div>
           <p>Signed in as: {user.name}</p>
           <p>Email: {user.email}</p>
-          <button type="button" onClick={(e) => HandleLogOut(e)}>
-            Sign Out
-          </button>
+          <button onClick={(e) => HandleLogOut(e)}>Sign Out</button>
         </div>
       )}
     </div>
