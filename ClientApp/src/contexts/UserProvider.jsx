@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
 import React from "react";
 import Cookies from "universal-cookie";
+// eslint-disable-next-line camelcase
 import jwt_decode from "jwt-decode";
 
 const cookies = new Cookies(); // We save login data in cookies for it to be persistent in browser
@@ -35,16 +39,16 @@ export const UserContext = React.createContext({
   dispath: () => null,
 });
 
-export const UserProvider = ({ children }) => {
+export function UserProvider({ children }) {
   // useReducer is similar to useState but works a bit differently. It is only needed for the global state
   const [state, dispath] = React.useReducer(
     (state, action) => staticStateAdditions(action),
     initialState
   );
-  //All components in {children} will be able to access UserContext and therefore the global user state
+  // All components in {children} will be able to access UserContext and therefore the global user state
   return (
     <UserContext.Provider value={[state, dispath]}>
       {children}
     </UserContext.Provider>
   );
-};
+}

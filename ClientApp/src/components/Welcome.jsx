@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserProvider";
 
 export default function Welcome() {
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
 
   return Object.keys(user).length < 1 ? (
     ""

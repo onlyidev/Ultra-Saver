@@ -43,7 +43,7 @@ export default class NavMenu extends Component {
           <NavbarBrand tag={Link} to="/">
             Ultra_Saver
           </NavbarBrand>
-          <Welcome></Welcome>
+          <Welcome />
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse
             className="d-sm-inline-flex flex-sm-row-reverse"

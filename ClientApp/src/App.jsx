@@ -1,3 +1,4 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
@@ -6,6 +7,7 @@ import { UserProvider } from "./contexts/UserProvider";
 import "./custom.css";
 
 export default class App extends Component {
+  // eslint-disable-next-line react/static-property-placement
   static displayName = App.name;
 
   render() {
@@ -16,6 +18,7 @@ export default class App extends Component {
           <Routes>
             {AppRoutes.map((route, index) => {
               const { element, ...rest } = route;
+              // eslint-disable-next-line react/no-array-index-key, react/jsx-props-no-spreading
               return <Route key={index} {...rest} element={element} />;
             })}
           </Routes>

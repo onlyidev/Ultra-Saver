@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Home } from "./components/Home";
 import Login from "./components/Login";
 import UserProps from "./components/UserProps";

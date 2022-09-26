@@ -9,6 +9,11 @@ import {
 function Login() {
   const [user, setUser] = useContext(UserContext); // This is the global user state
 
+  function HandleCallback(response) {
+    // function called when user successfully logs in
+    UpdateJwtToken(response.credential, setUser); // Adds token to cookies and sets user login data
+  }
+
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -23,12 +28,7 @@ function Login() {
     });
   }, []);
 
-  function HandleCallback(response) {
-    // function called when user successfully logs in
-    UpdateJwtToken(response.credential, setUser); // Adds token to cookies and sets user login data
-  }
-
-  function HandleLogOut(event) {
+  function HandleLogOut() {
     RemoveJwtToken(setUser); // deletes user data
   }
 
@@ -41,12 +41,14 @@ function Login() {
       <div
         id="signInDiv"
         style={{ display: Object.keys(user).length > 0 ? "none" : "block" }}
-      ></div>
+      />
       {Object.keys(user ?? {}).length !== 0 && ( // This div only shows up when user data is registered
         <div>
           <p>Signed in as: {user.name}</p>
           <p>Email: {user.email}</p>
-          <button onClick={(e) => HandleLogOut(e)}>Sign Out</button>
+          <button type="button" onClick={(e) => HandleLogOut(e)}>
+            Sign Out
+          </button>
         </div>
       )}
     </div>
