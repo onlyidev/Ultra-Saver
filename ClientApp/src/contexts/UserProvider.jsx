@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React from "react";
-import Cookies from "universal-cookie";
+import React from 'react';
+import Cookies from 'universal-cookie';
 // eslint-disable-next-line camelcase
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 const cookies = new Cookies(); // We save login data in cookies for it to be persistent in browser
 
-let token = cookies.get("jwt");
+let token = cookies.get('jwt');
 
 const staticStateAdditions = (obj) => {
   // If the user is logged in - we always want these to be available
@@ -22,13 +22,13 @@ export const UpdateJwtToken = (jwt, _setUser) => {
   // This gets called when we log in. The function saves the JWT token in cookies and sets global user state
   token = jwt;
   const decoded = jwt_decode(jwt);
-  cookies.set("jwt", jwt, { path: "/", expires: new Date(decoded.exp * 1000) });
+  cookies.set('jwt', jwt, { path: '/', expires: new Date(decoded.exp * 1000) });
   _setUser(decoded);
 };
 
 export const RemoveJwtToken = (_setUser) => {
   // Remove JWT from cookies and reset global user state
-  cookies.remove("jwt");
+  cookies.remove('jwt');
   token = undefined;
   _setUser({});
 };
@@ -36,7 +36,7 @@ export const RemoveJwtToken = (_setUser) => {
 export const UserContext = React.createContext({
   // Context allows for global state
   state: initialState,
-  dispath: () => null,
+  dispath: () => null
 });
 
 export function UserProvider({ children }) {
@@ -46,9 +46,5 @@ export function UserProvider({ children }) {
     initialState
   );
   // All components in {children} will be able to access UserContext and therefore the global user state
-  return (
-    <UserContext.Provider value={[state, dispath]}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={[state, dispath]}>{children}</UserContext.Provider>;
 }

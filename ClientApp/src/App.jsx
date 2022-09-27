@@ -1,10 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component } from "react";
-import { Route, Routes } from "react-router-dom";
-import AppRoutes from "./AppRoutes";
-import { Layout } from "./components/Layout";
-import { UserProvider } from "./contexts/UserProvider";
-import "./custom.css";
+import React, { Component } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import AppRoutes from './AppRoutes';
+import { Layout } from './components/Layout';
+import { UserProvider } from './contexts/UserProvider';
+import './custom.css';
 
 export default class App extends Component {
   // eslint-disable-next-line react/static-property-placement
