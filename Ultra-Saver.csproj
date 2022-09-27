@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hellang.Authentication.JwtBearer.Google" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -53,7 +54,7 @@
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)build\**" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
