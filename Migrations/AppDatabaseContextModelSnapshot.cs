@@ -9,8 +9,8 @@ using Ultra_Saver;
 
 namespace Ultra_Saver.Migrations
 {
-    [DbContext(typeof(SimpleDatabaseContext))]
-    partial class SimpleDatabaseContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDatabaseContext))]
+    partial class AppDatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace Ultra_Saver.Migrations
                     b.ToTable("RecipeTest");
                 });
 
-            modelBuilder.Entity("Ultra_Saver.SimpleTestModel", b =>
+            modelBuilder.Entity("UltraSaver.UserPropsModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,9 +51,12 @@ namespace Ultra_Saver.Migrations
                     b.Property<float>("KilowattHourCost")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("darkMode")
+                        .HasColumnType("boolean");
 
-                    b.ToTable("SimpleTests");
+                    b.HasKey("email");
+
+                    b.ToTable("properties");
                 });
 #pragma warning restore 612, 618
         }

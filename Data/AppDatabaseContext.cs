@@ -1,0 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using UltraSaver;
+
+namespace Ultra_Saver;
+
+public class AppDatabaseContext : DbContext
+{
+
+    public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options) : base(options)
+    {
+    }
+
+    public DbSet<UserPropsModel> properties { get; set; } // UserProps table
+
+}

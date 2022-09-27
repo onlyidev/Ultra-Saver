@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
+import Welcome from "./Welcome";
 
 export default class NavMenu extends Component {
   // eslint-disable-next-line react/static-property-placement
@@ -42,6 +43,7 @@ export default class NavMenu extends Component {
           <NavbarBrand tag={Link} to="/">
             Ultra_Saver
           </NavbarBrand>
+          <Welcome />
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse
             className="d-sm-inline-flex flex-sm-row-reverse"
@@ -55,26 +57,14 @@ export default class NavMenu extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">
-                  Counter
+                <NavLink tag={Link} className="text-dark" to="/user/properties">
+                  Properties
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                  Fetch data
+                <NavLink tag={Link} className="text-dark" to="/login">
+                  Login
                 </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={Link}
-                  className="text-dark"
-                  to="/show/simpledatatest"
-                >
-                  Simple Database Table
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
               </NavItem>
             </ul>
           </Collapse>

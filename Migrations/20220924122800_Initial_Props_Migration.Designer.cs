@@ -10,9 +10,9 @@ using Ultra_Saver;
 
 namespace Ultra_Saver.Migrations
 {
-    [DbContext(typeof(SimpleDatabaseContext))]
-    [Migration("20220917102757_Initial")]
-    partial class Initial
+    [DbContext(typeof(AppDatabaseContext))]
+    [Migration("20220924122800_Initial_Props_Migration")]
+    partial class Initial_Props_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,21 +23,17 @@ namespace Ultra_Saver.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Ultra_Saver.SimpleTestModel", b =>
+            modelBuilder.Entity("UltraSaver.UserPropsModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("message")
-                        .IsRequired()
+                    b.Property<string>("email")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("darkMode")
+                        .HasColumnType("boolean");
 
-                    b.ToTable("SimpleTests");
+                    b.HasKey("email");
+
+                    b.ToTable("properties");
                 });
 #pragma warning restore 612, 618
         }
