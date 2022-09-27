@@ -6,22 +6,22 @@ namespace Ultra_Saver.Controllers;
 [Route("[controller]")]
 public class EnergyCostController : ControllerBase
 {
-    private readonly SimpleDatabaseContext _db;
+    private readonly AppDatabaseContext _db;
 
-    public EnergyCostController(SimpleDatabaseContext db)
+    public EnergyCostController(AppDatabaseContext db)
     {
         _db = db;
     }
 
     [HttpGet]
-    public float CalculateEnergyCost()
+    public IActionResult CalculateEnergyCost()
     {
-        var id = 1; 
+        var res = _db.Recipes.Find(1);
 
-        return CalculateKiloWattHours(60, 2000);
+        return Ok(CalculateKiloWattHours(res.Minutes, res.Wattage) * 2); //ignitis standartas 
     }
 
-    private float CalculateKiloWattHours(int minutes, int wattage) // returns kWh of recipe
+    private float CalculateKiloWattHours(float minutes, float wattage) // returns kWh of recipe
     {
         float kw = wattage / 1000;
         float hours = minutes / 60;
@@ -29,3 +29,4 @@ public class EnergyCostController : ControllerBase
         return kw / hours; 
     }
 }
+// 30 9999

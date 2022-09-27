@@ -11,8 +11,8 @@ using Ultra_Saver;
 namespace Ultra_Saver.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    [Migration("20220924122800_Initial_Props_Migration")]
-    partial class Initial_Props_Migration
+    [Migration("20220927183328_Recipe_Test_Model_part2")]
+    partial class Recipe_Test_Model_part2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,25 @@ namespace Ultra_Saver.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Ultra_Saver.RecipeTestModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Minutes")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Wattage")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recipes");
+                });
 
             modelBuilder.Entity("UltraSaver.UserPropsModel", b =>
                 {
