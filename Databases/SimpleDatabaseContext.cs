@@ -18,4 +18,6 @@ public class SimpleDatabaseContext : DbContext
 
     public DbSet<SimpleTestModel> SimpleTests { get; set; }
 
+    public DbSet<RecipeTestModel> RecipeTest {  get; set; }
+
 }
