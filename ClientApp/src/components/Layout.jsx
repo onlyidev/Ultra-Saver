@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/prefer-default-export */
-import React, { Component } from "react";
-import { Container } from "reactstrap";
-import NavMenu from "./NavMenu";
+import React, { Component } from 'react';
+import { Container } from 'reactstrap';
+import NavMenu from './NavMenu';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export class Layout extends Component {

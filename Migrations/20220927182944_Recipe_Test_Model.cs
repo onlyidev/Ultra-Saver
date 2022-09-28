@@ -4,7 +4,7 @@
 
 namespace Ultra_Saver.Migrations
 {
-    public partial class Initial_Props_Migration : Migration
+    public partial class Recipe_Test_Model : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

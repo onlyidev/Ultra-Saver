@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/prefer-default-export */
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export class Counter extends Component {
   // eslint-disable-next-line react/static-property-placement
@@ -15,7 +15,7 @@ export class Counter extends Component {
   incrementCounter() {
     this.setState({
       // eslint-disable-next-line react/no-access-state-in-setstate
-      currentCount: this.state.currentCount + 1,
+      currentCount: this.state.currentCount + 1
     });
   }
 
@@ -30,11 +30,7 @@ export class Counter extends Component {
           Current count: <strong>{this.state.currentCount}</strong>
         </p>
 
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={this.incrementCounter}
-        >
+        <button type="button" className="btn btn-primary" onClick={this.incrementCounter}>
           Increment
         </button>
       </div>

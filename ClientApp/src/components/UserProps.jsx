@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../contexts/UserProvider";
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../contexts/UserProvider';
 
 export default function UserProps() {
   const [user] = useContext(UserContext); // Global user state
@@ -8,12 +8,12 @@ export default function UserProps() {
   const [tableState, setTableState] = useState({ loading: true, error: false });
 
   async function populateData() {
-    const data = await fetch("/userinfo", {
+    const data = await fetch('/userinfo', {
       // In order to get data from a restricted API we need to provide an Authorization header
-      method: "GET",
+      method: 'GET',
       headers: {
-        Authorization: user.header,
-      },
+        Authorization: user.header
+      }
     });
     if (data.status !== 200) {
       setTableState({ ...tableState, error: true });
@@ -28,8 +28,7 @@ export default function UserProps() {
     populateData();
   }, []);
 
-  if (tableState.error)
-    return <h3 style={{ color: "red" }}>An error has occured...</h3>;
+  if (tableState.error) return <h3 style={{ color: 'red' }}>An error has occured...</h3>;
 
   return tableState.loading ? (
     <p>Loading...</p>
