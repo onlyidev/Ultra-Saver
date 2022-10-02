@@ -48,3 +48,26 @@ export function UserProvider({ children }) {
   // All components in {children} will be able to access UserContext and therefore the global user state
   return <UserContext.Provider value={[state, dispath]}>{children}</UserContext.Provider>;
 }
+
+// Helpers for doing API calls
+
+export const authApi = (user) => ({
+  get: (url) =>
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        // eslint-disable-next-line no-underscore-dangle
+        Authorization: user.header
+      }
+    }),
+  post: (url, body, method = 'POST') =>
+    fetch(url, {
+      method,
+      headers: {
+        // eslint-disable-next-line no-underscore-dangle
+        Authorization: user.header
+      },
+      body
+    }),
+  delete: (url, body) => this.post(url, body, 'DELETE')
+});

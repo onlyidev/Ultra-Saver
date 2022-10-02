@@ -1,20 +1,17 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../contexts/UserProvider';
+import { authApi, UserContext } from '../contexts/UserProvider';
 
 export default function UserProps() {
-  const [user] = useContext(UserContext); // Global user state
+  const [user] = useContext(UserContext);
   const [props, setProps] = useState({});
   const [tableState, setTableState] = useState({ loading: true, error: false });
 
+  console.log(authApi(user));
+
   async function populateData() {
-    const data = await fetch('/userinfo', {
-      // In order to get data from a restricted API we need to provide an Authorization header
-      method: 'GET',
-      headers: {
-        Authorization: user.header
-      }
-    });
+    const data = await authApi(user).get('userinfo');
+
     if (data.status !== 200) {
       setTableState({ ...tableState, error: true });
     } else {
