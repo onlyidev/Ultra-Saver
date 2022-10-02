@@ -65,7 +65,8 @@ export const authApi = (user) => ({
       method,
       headers: {
         // eslint-disable-next-line no-underscore-dangle
-        Authorization: user.header
+        Authorization: user.header,
+        'Content-type': 'application/json'
       },
       body
     }),

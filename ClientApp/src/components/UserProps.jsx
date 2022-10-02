@@ -7,8 +7,6 @@ export default function UserProps() {
   const [props, setProps] = useState({});
   const [tableState, setTableState] = useState({ loading: true, error: false });
 
-  console.log(authApi(user));
-
   async function populateData() {
     const data = await authApi(user).get('userinfo');
 
@@ -16,7 +14,7 @@ export default function UserProps() {
       setTableState({ ...tableState, error: true });
     } else {
       const json = await data.json();
-      setProps(json);
+      setProps({ ...json, original: true });
       setTableState({ ...tableState, loading: false });
     }
   }
@@ -30,28 +28,41 @@ export default function UserProps() {
   return tableState.loading ? (
     <p>Loading...</p>
   ) : (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>email</th>
-          <th>Dark Mode</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{props.email}</td>
-          <td>
-            <input
-              checked={props.darkMode}
-              type="checkbox"
-              className="form-check w-25"
-              onClick={(event) => {
-                event.preventDefault();
-              }}
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>email</th>
+            <th>Dark Mode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{props.email}</td>
+            <td>
+              <input
+                checked={props.darkMode}
+                type="checkbox"
+                className="form-check w-25"
+                onChange={() => {}}
+                onClick={() => {
+                  setProps({ ...props, darkMode: !props.darkMode, original: false });
+                }}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        type="button"
+        className="btn btn-primary"
+        hidden={props.original}
+        onClick={async () => {
+          await authApi(user).post('userinfo', JSON.stringify(props));
+          setProps({ ...props, original: true });
+        }}>
+        Save changes
+      </button>
+    </>
   );
 }
