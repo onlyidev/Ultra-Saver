@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
-import { RemoveJwtToken, UpdateJwtToken, UserContext } from '../contexts/UserProvider';
+// eslint-disable-next-line no-unused-vars
+import { RemoveJwtToken, UpdateJwtToken, UserContext, authApi } from '../contexts/UserProvider';
 
 function Login() {
   const [user, setUser] = useContext(UserContext); // This is the global user state
