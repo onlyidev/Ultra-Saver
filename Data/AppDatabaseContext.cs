@@ -11,7 +11,7 @@ public class AppDatabaseContext : DbContext
     }
 
     public DbSet<UserPropsModel> properties { get; set; } // UserProps table
-    public DbSet<RecipeTestModel> Recipes { get; set; }
+    public DbSet<RecipeModel> Recipes { get; set; }
 
 
 }

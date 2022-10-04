@@ -6,6 +6,8 @@ import { RemoveJwtToken, UpdateJwtToken, UserContext, authApi } from '../context
 function Login() {
   const [user, setUser] = useContext(UserContext); // This is the global user state
 
+  console.log(authApi(user));
+
   function HandleCallback(response) {
     // function called when user successfully logs in
     UpdateJwtToken(response.credential, setUser); // Adds token to cookies and sets user login data

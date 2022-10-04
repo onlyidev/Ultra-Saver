@@ -69,6 +69,5 @@ export const authApi = (user) => ({
         'Content-type': 'application/json'
       },
       body
-    }),
-  delete: (url, body) => this.post(url, body, 'DELETE')
+    })
 });
