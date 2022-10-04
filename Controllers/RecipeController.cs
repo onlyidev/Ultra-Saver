@@ -9,7 +9,7 @@ namespace Ultra_Saver;
 [Route("[controller]")]
 public class RecipeController : ControllerBase
 {
-    private AppDatabaseContext _db;
+    private readonly AppDatabaseContext _db;
 
     public RecipeController(AppDatabaseContext db)
     {
@@ -20,7 +20,7 @@ public class RecipeController : ControllerBase
     public IActionResult getRecipies()
     {
         // TODO get all recipies from database and return with pagination
-        // TODO implement filter functionality
+        // TODO implement filter functionality (will use regex)
         return Ok("getRecipies");
     }
 
