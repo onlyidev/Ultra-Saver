@@ -8,16 +8,16 @@ public class EnergyCostAlgorithm
     private static float costPerkWh = 0;
 
     // powerScale is a proportion of power used for the specified time; scales 1 to 10; ex.: medium heat, 3/10 of power
-    private void electricPower (int appliencePower, short powerScale, int timeInMin){
-        totalEnergy += appliencePower * powerScale * timeInMin / 60_000;
+    private void electricPower (int appliancePower, short powerScale, int timeInMin){
+        totalEnergy += appliancePower * powerScale * timeInMin / 60_000;
         totalEnergyCost = Math.Round (totalEnergy * costPerkWh, 2);
     }
 
-    private double gasPower (int appliencePower, short powerScale, int timeInMin){
+    private double gasPower (int appliancePower, short powerScale, int timeInMin){
         return 0;
     }
 
-    private double gasPowerCost (int appliencePower, short powerScale, int timeInMin, float costPerLitre){
+    private double gasPowerCost (int appliancePower, short powerScale, int timeInMin, float costPerLitre){
         return 0;
     }
 
