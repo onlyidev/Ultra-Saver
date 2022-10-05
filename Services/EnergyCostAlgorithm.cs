@@ -9,7 +9,7 @@ public class EnergyCostAlgorithm
 
     // powerScale is a proportion of power used for the specified time; scales 1 to 10; ex.: medium heat, 3/10 of power
     private void electricPower (int appliancePower, short powerScale, int timeInMin){
-        totalEnergy += appliancePower * powerScale * timeInMin / 60_000;
+        totalEnergy += appliancePower * powerScale * timeInMin / 600_000;
         totalEnergyCost = Math.Round (totalEnergy * costPerkWh, 2);
     }
 
