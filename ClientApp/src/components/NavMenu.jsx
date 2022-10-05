@@ -1,6 +1,17 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  NavItem,
+  NavLink,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import Welcome from './Welcome';
@@ -13,8 +24,10 @@ export default class NavMenu extends Component {
     super(props);
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
+    // this.toggleDropdown = this.toggleDropdown.bind(this);
     this.state = {
       collapsed: true
+      // dropCollapsed: true
     };
   }
 
@@ -24,6 +37,13 @@ export default class NavMenu extends Component {
       collapsed: !this.state.collapsed
     });
   }
+
+  // toggleDropdown() {
+  //   this.setState({
+  //     // eslint-disable-next-line react/no-access-state-in-setstate
+  //     dropCollapsed: !this.state.dropCollapsed
+  //   });
+  // }
 
   render() {
     return (
@@ -62,6 +82,19 @@ export default class NavMenu extends Component {
                   Energy Cost
                 </NavLink>
               </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret className="text-dark">
+                  Recipes
+                </DropdownToggle>
+                <DropdownMenu end>
+                  <DropdownItem tag={Link} to="/sharerecipe" className="text-dark">
+                    Share Recipe
+                  </DropdownItem>
+                  <DropdownItem tag={Link} to="/sharerecipe" className="text-dark">
+                    Search Recipes
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </ul>
           </Collapse>
         </Navbar>
