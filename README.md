@@ -45,3 +45,4 @@ There is a high chance you will need info from a backend API route that requires
    1. DELETE method `authApi(user).post(<url>, <body>, "DELETE")` Just as in the previous method, it is important that `<body>` matches the database model
 
 > \*upsert: check if an entry with the unique identifier exists in the database -> if so, update with provided data; otherwise create a new entry in the database using provided data
+test
